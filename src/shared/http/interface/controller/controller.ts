@@ -9,6 +9,7 @@ type handleFull = ({
 }: IHttpRequest) => Promise<IHttpResponse>;
 
 type handleBoth = handleMini | handleFull;
+
 export interface IControllerBase {
   handle: handleBoth;
 }

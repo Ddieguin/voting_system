@@ -1,12 +1,12 @@
 export interface IHttpResponse {
-    statusCode: number;
     body: any;
+    statusCode: number;
 }
 
 //TODO refactoring the types
 export interface IHttpRequest {
     body?: any;
-    user_id?: any;
+    voter_id?: any;
     params?: any;
     query?: any;
 }
