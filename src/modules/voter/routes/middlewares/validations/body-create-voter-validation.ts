@@ -7,8 +7,9 @@ export const bodyCreateVoterValidation = () => {
             name: Joi.string().required(),
             rg: Joi.string().required(),
             city: Joi.string().required(),
-            date_birthday: Joi.string().required(),
-            district: Joi.string().required()
+            date_birthday: Joi.date().required(),
+            district: Joi.string().required(),
+            birth_city: Joi.string().required()
         }
     })
 }

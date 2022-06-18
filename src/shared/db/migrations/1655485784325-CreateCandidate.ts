@@ -1,10 +1,10 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm"
+import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateVoter1653330975382 implements MigrationInterface {
+export class CreateCandidate1655485784325 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-       await queryRunner.createTable(new Table({
-            name: 'votting_system_voter',
+        await queryRunner.createTable(new Table({
+            name: 'votting_system_candidate',
             columns: [
                 {
                     name: "id",
@@ -18,7 +18,19 @@ export class CreateVoter1653330975382 implements MigrationInterface {
                     type: "varchar",
                 },
                 {
+                    name: "rg",
+                    type: "varchar"
+                },
+                {
                     name: "birth_city",
+                    type: "varchar"
+                },
+                {
+                    name: "political_party",
+                    type: "varchar"
+                },
+                {
+                    name: "number_political_party",
                     type: "varchar"
                 },
                 {
@@ -26,17 +38,8 @@ export class CreateVoter1653330975382 implements MigrationInterface {
                     type: "timestamp"
                 },
                 {
-                    name: "district",
-                    type: "varchar"
-                },
-                {
                     name: "city",
                     type: "varchar"
-                },
-                {
-                    name: "candidate_id",
-                    type: "uuid",
-                    isNullable: true
                 },
                 {
                     name: "created_at",
@@ -48,22 +51,13 @@ export class CreateVoter1653330975382 implements MigrationInterface {
                     type: "timestamp with time zone",
                     default: "now()"
                 }
-            ],
-            foreignKeys: [
-                {
-                    name: "CandidateFK",
-                    columnNames: ['candidate_id'],
-                    referencedTableName: 'votting_system_candidate',
-                    referencedColumnNames: ["id"],
-                    onDelete: "SET NULL"
-                }
             ]
         }))
 
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("votting_system_candidate");
+        await queryRunner.dropTable('votting_system_voter');
     }
 
 }

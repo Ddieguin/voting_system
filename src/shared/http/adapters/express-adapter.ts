@@ -5,7 +5,9 @@ import { IControllerBase } from '../interface/controller/controller'
 export const adaptRoutes = (controller:  IControllerBase) => {
     return async (req: Request, res: Response) => {
         const request: IHttpRequest = {
-            body: req.body
+            body: req.body,
+            voter_id: req.voter_id,
+            params: req.params
         };
 
         const response = await controller.handle(request);

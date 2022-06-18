@@ -12,9 +12,9 @@ export class ListVotesController implements IControllerBase {
         this.listVotesService = listVotesService;
     }
 
-    async handle({ query }: IHttpRequest): Promise<IHttpResponse>  {
+    async handle({ params }: IHttpRequest): Promise<IHttpResponse>  {
 
-        const votes = await this.listVotesService.execute(query);
+        const votes = await this.listVotesService.execute(params);
 
         return {
             body: {

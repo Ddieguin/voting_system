@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import 'express-async-errors';
 import dotenv from 'dotenv';
 import createConnection from "../db/index";
 dotenv.config();

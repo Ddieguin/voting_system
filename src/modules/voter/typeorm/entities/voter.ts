@@ -19,7 +19,8 @@ export class Voter {
     @Column()
     candidate_id: string;
 
-    @ManyToOne(() => Candidate, candidate => candidate.voters)
+    @ManyToOne(() => Candidate)
+    @JoinColumn({ name: "candidate_id"})
     candidate: Candidate;
 
     @Column()

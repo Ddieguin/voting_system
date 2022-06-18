@@ -4,7 +4,7 @@ import { VoterRepository } from "../typeorm/repositories/voter-repository";
 
 
 interface IRequestUpdateVote {
-    vote: string;
+    number_political_party: string;
     voter_id: string;
 }
 
@@ -18,14 +18,14 @@ export class UpdateVoteService {
         this.candidateRepository = candidateRepository;
     }
 
-    async execute({ voter_id, vote }: IRequestUpdateVote): Promise<void> {
+    async execute({ voter_id, number_political_party }: IRequestUpdateVote): Promise<void> {
         const voter = await this.voterRepository.findById(voter_id);
 
         if(!voter) {
             throw new AppError(`Voter not found`);
         }
 
-        const candidate = await this.candidateRepository.findByNumberPoliticalParty(vote);
+        const candidate = await this.candidateRepository.findByNumberPoliticalParty(number_political_party);
         
         if(!candidate) {
             throw new AppError(`Candidate not found`);
