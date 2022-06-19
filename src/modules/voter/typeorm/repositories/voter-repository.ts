@@ -1,4 +1,5 @@
 import { EntityRepository, getCustomRepository, Repository } from "typeorm";
+import { Candidate } from "../../../candidate/typeorm/entities/candidate";
 import { Voter } from "../entities/voter";
 
 
@@ -32,6 +33,17 @@ export class VoterRepository extends Repository<Voter> {
         })
 
         return voter;
+    }
+
+    async getAllVoters(candidate_id: string) {
+        
+        const voters = await this.find({
+            where: {
+                candidate_id
+            }
+        })
+    
+        return voters;
     }
 
 

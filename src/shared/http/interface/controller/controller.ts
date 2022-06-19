@@ -4,7 +4,7 @@ type handleMini = () => Promise<IHttpResponse>;
 type handleFull = ({
   body,
   params,
-  user_id,
+  voter_id,
   query,
 }: IHttpRequest) => Promise<IHttpResponse>;
 

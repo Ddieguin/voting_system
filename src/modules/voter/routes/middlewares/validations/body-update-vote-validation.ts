@@ -4,7 +4,7 @@ import { celebrate, Joi, Segments } from 'celebrate';
 export const bodyUpdateVoteValidation = () => {
     return celebrate({
         [Segments.BODY]: {
-            vote: Joi.string().required().min(2).max(2) //! two chars
+            number_political_party: Joi.string().required().min(2).max(2) //! two chars
         }
     })
 }

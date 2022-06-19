@@ -25,6 +25,7 @@ export class CandidateRepository extends Repository<Candidate> {
     } 
 
     async findByNumberPoliticalParty(number_political_party: string): Promise<Candidate | undefined> {
+        
         const candidate = await this.findOne({
             where: {
                 number_political_party
@@ -33,6 +34,7 @@ export class CandidateRepository extends Repository<Candidate> {
 
         return candidate;
     }
+
 
     async findByName(name: string): Promise<Candidate | undefined> {
         const candidate = await this.findOne({

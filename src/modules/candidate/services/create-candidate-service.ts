@@ -33,17 +33,18 @@ export class CreateCandidateService {
     if (candidate) {
       const isValidRg = await compare(rg, candidate.rg);
       if (isValidRg) {
-        throw new AppError(`Voter already exits`, 401);
+        throw new AppError(`Candidate already exits`, 400);
       }
     }
 
     const new_candidate = this.candidateRepository.create({
       name,
+      rg,
       political_party,
       number_political_party,
       birth_city,
       city,
-      date_birthday,
+      date_birthday: new Date(date_birthday).toISOString(),
     });
 
     await this.candidateRepository.save(new_candidate);

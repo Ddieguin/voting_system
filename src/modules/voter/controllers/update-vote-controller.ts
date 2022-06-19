@@ -15,7 +15,7 @@ export class UpdateVoteController implements IControllerBase {
 
         return {
             body: {
-                data: "Sucessful vote"
+                data: "confirmed vote"
             },
             statusCode: 200,
         }

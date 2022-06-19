@@ -1,4 +1,5 @@
 import { compare } from "bcrypt";
+import { SimpleConsoleLogger } from "typeorm";
 import { AppError } from "../../../shared/http/errors/app-error";
 import { VoterRepository } from "../typeorm/repositories/voter-repository";
 
@@ -7,6 +8,7 @@ interface ICreateVoter {
     rg: string;
     city: string;
     date_birthday: Date;
+    birth_city: string;
     district: string;
 }
 
@@ -19,10 +21,10 @@ export class CreateVoterService {
         this.voterRepository = voterRepository;
     }
     
-    async execute({ name, rg, city, date_birthday, district }: ICreateVoter) {
+    async execute({ name, rg, city, date_birthday, district, birth_city}: ICreateVoter) {
 
         const voter = await this.voterRepository.findByName(name)
-
+        
         if(voter) {
             const isValidRg = await compare(rg, voter.rg);
             if(isValidRg) {
@@ -34,7 +36,8 @@ export class CreateVoterService {
             name, 
             rg,
             city,
-            date_birthday,
+            birth_city,
+            date_birthday: new Date(date_birthday).toISOString(),
             district,
         })
         
